@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="images" href="images/favicon.png">
+  <link rel="stylesheet" href="css/fontawesome.min.css">
+  <link rel="stylesheet" href="css/light.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/modern-normalize.min.css" type="text/css">
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <title>ToDo</title>
+</head>
+
+<body id="body">
+
+  <header id="header">
+    <!-- MENU TOGGLE -->
+    <div class="toggle-menu">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+
+    <!-- LOGO -->
+    <p class="logo"><i class="fal fa-check-double padding-right"></i>ToDo</p>
+  </header>
+
+  <!-- SIDE MENU -->
+  <nav id="sidebar-menu">
+
+    <div class="menu-links">
+      <a href="#" class="link menu-link select selected-link" data-link-index="0" data-title="all">
+        <i class="fal fa-calendar-alt menu-link-icon select padding-right" data-link-index="0" data-title="all" data-icon="fa-calendar-alt"></i>
+        <p class="menu-link-text select" data-link-index="0" data-title="all">All</p>
+      </a>
+      <a href="#" class="link menu-link select" data-link-index="1" data-title="today">
+        <i class="fal fa-calendar-day menu-link-icon select padding-right" data-link-index="1" data-title="today" data-icon="fa-calendar-day"></i>
+        <p class="menu-link-text select" data-link-index="1" data-title="today">Today</p>
+      </a>
+      <a href="#" class="link menu-link select" data-link-index="2" data-title="week">
+        <i class="fal fa-calendar-week menu-link-icon select padding-right" data-link-index="2" data-title="week" data-icon="fa-calendar-week"></i>
+        <p class="menu-link-text select" data-link-index="2" data-title="week">Week</p>
+      </a>
+      <a href="#" class="link menu-link select" data-link-index="3" data-title="important">
+        <i class="fal fa-calendar-star menu-link-icon select padding-right" data-link-index="3" data-title="important" data-icon="fa-calendar-star"></i>
+        <p class="menu-link-text select" data-link-index="3" data-title="important">Important</p>
+      </a>
+      <a href="#" class="link menu-link select" data-link-index="4" data-title="completed">
+        <i class="fal fa-calendar-check menu-link-icon select padding-right" data-link-index="4" data-title="completed" data-icon="fa-calendar-check"></i>
+        <p class="menu-link-text select" data-link-index="4" data-title="completed">Completed</p>
+      </a>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="nav-projects">
+      <div class="nav-projects-title">
+        <p>Projects (<span class="projects-count"></span>)</p>
+        <i class="fal fa-plus-circle add-project hover-element tooltip-icon">
+          <span class="add-project tooltip-text">Add New Project</span>
+        </i>
+      </div>
+      <div class="projects-links-div">
+        <!-- Projects list here -->
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <p class="crafted-by"> ☽ Crafted by
+        <a href="https://github.com/mooniiDev" target="_blank" class="footer-link">mooniiDev</a> |
+        <a href="https://github.com/mooniiDev/todo-list" target="_blank" class="footer-link">Source</a> ☾
+      </p>
+    </footer>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+    <!-- TITLE -->
+    <div class="main-title-div">
+      <i class="main-title-icon"></i>
+      <h1 class="main-title-text"></h1>
+    </div>
+
+    <!-- TASKS -->
+    <div class="tasks-div">
+
+      <!-- TASKS TITLE -->
+      <div class="tasks-title-div">
+        <div class="tasks-title">
+          <p>Tasks (<span class="tasks-count"></span>)</p>
+        </div>
+        <i class="fal fa-plus-circle add-task task-icon hover-element tooltip-icon hide">
+          <span class="add-task tooltip-text">Add New Task</span>
+        </i>
+      </div>
+
+      <!-- TASKS LIST -->
+      <div class="tasks-list">
+        <!-- Tasks here -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="close hide">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-main-title"></h2>
+        <i class="fal fa-times close-modal close"></i>
+      </div>
+      <div class="modal-content">
+
+        <!-- PROJECT DELETION -->
+        <p class="project-deletion-text hide">Are you sure?<br><br>
+        Project <span class="project-deletion-title"></span> will be gone forever!</p>
+
+        <!-- TASK DELETION -->
+        <p class="task-deletion-text hide">Are you sure?<br><br>
+          Task <span class="task-deletion-title"></span> will be gone forever!</p>
+
+        <!-- TASK INFO CONTENT -->
+        <div class="info-div hide">
+
+          <!-- TITLE -->
+          <div class="task-title-div">
+            <p class="info-title padding-right">Title:</p>
+            <p class="info-task-title"></p>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="task-description-div">
+            <p class="info-description padding-right">Description:</p>
+            <p class="info-task-description"></p>
+          </div>
+
+          <!-- DUE DATE -->
+          <div class="task-due-date-div">
+            <p class="info-due-date padding-right">Due date:</p>
+            <p class="info-task-due-date"></p>
+          </div>
+
+          <!-- PRIORITY -->
+          <div class="task-priority-div">
+            <p class="info-priority padding-right">Priority:</p>
+            <p class="info-task-priority"></p>
+          </div>
+
+          <!-- PROJECT -->
+          <div class="task-project-div">
+            <p class="info-project padding-right">Project:</p>
+            <p class="info-task-project"></p>
+          </div>
+
+        </div>
+
+        <form id="form" name="form" method="POST">
+
+          <!-- MODAL TITLE INPUT -->
+          <div>
+            <label id="modal-title-label" for="modal-title">Title<span class="title-star">*</span></label>
+            <input type="text" id="modal-title" name="modal-title" autocomplete="off">
+            <p class="modal-title-error hide">Please fill out this field.</p>
+          </div>
+
+          <!-- RADIO BUTTONS -->
+          <div class="radio-form show">
+            <p>Icon</p>
+            <div class="project-icons">
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="flower-daffodil" class="icon" name="projectFormIcon" value="fa-flower-daffodil" checked>
+                  <span class="radio-control"><i class="fal fa-flower-daffodil fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="book" class="icon" name="projectFormIcon" value="fa-book">
+                  <span class="radio-control"><i class="fal fa-book fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="tools" class="icon" name="projectFormIcon" value="fa-tools">
+                  <span class="radio-control"><i class="fal fa-tools fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="volleyball-ball" class="icon" name="projectFormIcon" value="fa-volleyball-ball">
+                  <span class="radio-control"><i class="fal fa-volleyball-ball fa-fw"></i></span>
+                </span>
+              </label>
+              <label class=" radio radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="sack-dollar" class="icon" name="projectFormIcon" value="fa-sack-dollar">
+                  <span class="radio-control"><i class="fal fa-sack-dollar fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="pizza-slice" class="icon" name="projectFormIcon" value="fa-pizza-slice">
+              F    <span class="radio-control"><i class="fal fa-pizza-slice fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="backpack" class="icon" name="projectFormIcon" value="fa-backpack">
+                  <span class="radio-control"><i class="fal fa-backpack fa-fw"></i></span>
+                </span>
+              </label>
+              <label class="radio-before">
+                <span class="radio-input">
+                  <input type="radio" id="gift" class="icon" name="projectFormIcon" value="fa-gift">
+                  <span class="radio-control"><i class="fal fa-gift fa-fw"></i></span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- MODAL CONTENT FOR A TASK -->
+          <div class="modal-tasks-div hide">
+
+            <!-- TASK DESCRIPTION -->
+            <div class="task-description-area">
+              <label for="task-description">Description</label>
+              <textarea class="task-description" rows="3" cols="36"></textarea>
+            </div>
+
+            <!-- TASK DUE DATE -->
+            <div class="task-due-date">
+              <label for="dueDate">Due Date</label>
+              <input type="date" id="dueDate" name="dueDate">
+            </div>
+
+            <!-- TASK PRIORITY -->
+            <div>
+              <label for="priority">Priority</label>
+              <select class="task-priority" name="priority">
+                <option value="" disabled selected>How important is this task?</option>
+                <option value="low">😴 Not important at all..</option>
+                <option value="medium">😅 A bit important</option>
+                <option value="high">😲 Super important!</option>
+              </select>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- MODAL BUTTONS -->
+        <div class="modal-buttons">
+          <button type="button" class="cancel-modal close">Cancel</button>
+          <button type="button" class="modal-task-button confirm-modal"></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
